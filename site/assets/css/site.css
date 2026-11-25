@@ -489,6 +489,10 @@ label .field-error { margin: 0; }
 .contact { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 72px); }
 .contact address { font-style: normal; color: var(--ink-soft); }
 .contact address strong { color: var(--ink); }
+/* A link with a small icon in front, e.g. LinkedIn. */
+.icon-link { display: inline-flex; align-items: center; gap: 8px; }
+.icon-link .icon { flex: none; fill: currentColor; }
+.icon-link-strong { font-weight: 700; color: var(--teal-700); }
 .contact-list { list-style: none; padding: 0; margin: 20px 0 0; }
 .contact-list li { margin-bottom: 8px; }
 .form { display: grid; gap: 16px; }
