@@ -182,6 +182,8 @@ p  { margin: 0 0 1em; }
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
     linear-gradient(180deg, rgba(2, 44, 44, .82) 0, rgba(2, 44, 44, .45) calc(var(--header-h) + 24px), rgba(3, 58, 58, 0) calc(var(--header-h) + 140px)),
+    /* Darkens towards the bottom, behind the headline and buttons. */
+    linear-gradient(0deg, rgba(2, 36, 36, .92) 0%, rgba(2, 40, 40, .72) 22%, rgba(3, 50, 50, .38) 48%, rgba(3, 58, 58, 0) 75%),
     linear-gradient(90deg, rgba(3, 58, 58, .92) 0%, rgba(3, 58, 58, .55) 55%, rgba(3, 58, 58, .15) 100%);
 }
 .hero .wrap { position: relative; z-index: 1; width: 100%; padding-top: calc(var(--header-h) + 56px); padding-bottom: clamp(64px, 9vw, 112px); }
