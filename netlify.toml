@@ -1,0 +1,97 @@
+# Static Octoply site. Netlify publishes the site/ folder as-is; there is no
+# build step. Deploys come from GitHub Actions (.github/workflows/deploy-site.yml).
+[build]
+  base    = "site"
+  publish = "."
+  command = ""
+
+# Moving domains: once octoply.com is added to this Netlify site as a domain
+# alias, every old address is sent to the same path on octoply.co, where the
+# rules below map it to a new page. (www.octoply.co is handled by Netlify.)
+[[redirects]]
+  from = "https://octoply.com/*"
+  to   = "https://octoply.co/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.octoply.com/*"
+  to   = "https://octoply.co/:splat"
+  status = 301
+  force = true
+
+# Old octoply.com addresses → pages on this site, so existing links and
+# search results still land somewhere useful. Old jobs pages go to the jobs
+# form; anything else that no longer exists gets the 404 page.
+[[redirects]]
+  from = "/octoply"
+  to   = "/"
+  status = 301
+[[redirects]]
+  from = "/robinshood/privacypolicy"
+  to   = "/privacy/"
+  status = 301
+[[redirects]]
+  from = "/robinshood/*"
+  to   = "/projects/robins-hood/"
+  status = 301
+[[redirects]]
+  from = "/robinshood"
+  to   = "/projects/robins-hood/"
+  status = 301
+[[redirects]]
+  from = "/privacypolicy"
+  to   = "/privacy/"
+  status = 301
+[[redirects]]
+  from = "/jobapplications/privacypolicy"
+  to   = "/privacy/"
+  status = 301
+[[redirects]]
+  from = "/jobapplications/admin/*"
+  to   = "/"
+  status = 301
+[[redirects]]
+  from = "/jobapplications/*"
+  to   = "/#jobs"
+  status = 301
+[[redirects]]
+  from = "/jobapplications"
+  to   = "/#jobs"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Strict-Transport-Security = "max-age=31536000"
+    # Everything is served from this site; the one inline script (the line in
+    # each page's <head> that adds the "js" class) is allowed by its hash. If
+    # that line changes, or a third-party script such as analytics is added,
+    # this policy must be updated or the browser will block it.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-N9v3EnPaUyp6HvI/g75KoK11mUw7quk1fPSwEhREnaU='; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    # PREVIEW ONLY: keeps search engines from listing the preview site.
+    # Remove this line when the site goes live on octoply.co.
+    X-Robots-Tag = "noindex, nofollow"
+# CSS and JS links carry ?v=<content hash>, so they can be cached for a year.
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+# Images have no version in their URL: browsers re-check them (cheap, via ETag)
+# so a replaced image shows up straight away.
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
