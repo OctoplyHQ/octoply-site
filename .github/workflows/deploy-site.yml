@@ -84,6 +84,7 @@ jobs:
           url=$(jq -r ".$key" deploy.json)
           echo "url=$url" >> "$GITHUB_OUTPUT"
           echo "Deployed to $url" >> "$GITHUB_STEP_SUMMARY"
+          echo "::notice title=Deployed::$url"
 
       - name: Comment preview link on the pull request
         if: steps.secrets.outputs.ready == 'true' && github.event_name == 'pull_request'
