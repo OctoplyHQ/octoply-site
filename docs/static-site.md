@@ -92,8 +92,8 @@ One-off setup, in the Octoply Netlify account, on the existing site:
 Canonical links, `sitemap.xml`, `robots.txt`, share-image URLs and the
 organisation data on the homepage all use `https://octoply.co`. To go live:
 
-1. In Netlify, add `octoply.co` as the primary domain and `octoply.com` /
-   `www.octoply.com` as domain aliases, then point DNS at Netlify.
+1. In Netlify, add `octoply.co` as the primary domain and `octoply.com`, `octoply.co.uk`, `octoply.uk`
+   and their `www.` versions as domain aliases, then point DNS at Netlify.
 2. Turn off visitor access (the password) in Netlify. The preview-only
    `X-Robots-Tag` line has already been removed from `netlify.toml`.
 3. Switch on email notifications for the `application` and `contact` forms.
@@ -112,7 +112,7 @@ organisation data on the homepage all use `https://octoply.co`. To go live:
 
 | Old octoply.com address | Goes to |
 | --- | --- |
-| any path on octoply.com / www.octoply.com | same path on octoply.co, then the rules below |
+| any path on octoply.com, octoply.co.uk, octoply.uk (and www.) | same path on octoply.co (`site/_redirects`), then the rules below |
 | `/octoply` | `/` |
 | `/robinshood`, `/robinshood/*` | `/projects/robins-hood/` |
 | `/robinshood/privacypolicy`, `/privacypolicy`, `/jobapplications/privacypolicy` | `/privacy/` |

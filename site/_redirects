@@ -1,0 +1,11 @@
+# Other Octoply domains → the same path on octoply.co. Each domain must also be
+# added to this Netlify project as a domain alias, with DNS pointing at Netlify,
+# or the request never reaches these rules. Netlify upgrades http:// to https://
+# first, so these also catch plain-http links. Paths from the old site are then
+# mapped to new pages by the [[redirects]] rules in netlify.toml.
+https://octoply.com/*         https://octoply.co/:splat  301!
+https://www.octoply.com/*     https://octoply.co/:splat  301!
+https://octoply.co.uk/*       https://octoply.co/:splat  301!
+https://www.octoply.co.uk/*   https://octoply.co/:splat  301!
+https://octoply.uk/*          https://octoply.co/:splat  301!
+https://www.octoply.uk/*      https://octoply.co/:splat  301!

@@ -5,19 +5,9 @@
   publish = "site"
   command = ""
 
-# Moving domains: once octoply.com is added to this Netlify site as a domain
-# alias, every old address is sent to the same path on octoply.co, where the
-# rules below map it to a new page. (www.octoply.co is handled by Netlify.)
-[[redirects]]
-  from = "https://octoply.com/*"
-  to   = "https://octoply.co/:splat"
-  status = 301
-  force = true
-[[redirects]]
-  from = "https://www.octoply.com/*"
-  to   = "https://octoply.co/:splat"
-  status = 301
-  force = true
+# Other domains (octoply.com, octoply.co.uk, octoply.uk and their www.
+# versions) are sent to octoply.co by site/_redirects, which Netlify reads
+# before the rules below. (www.octoply.co is handled by Netlify.)
 
 # Old octoply.com addresses → pages on this site, so existing links and
 # search results still land somewhere useful. Old jobs pages go to the jobs
