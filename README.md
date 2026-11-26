@@ -10,10 +10,6 @@
   A coordination company. We originate ideas and develop them until they can stand on their own.
 </p>
 
-<p align="center">
-  <a href="https://github.com/OctoplyHQ/octoply/actions/workflows/deploy-site.yml"><img src="https://github.com/OctoplyHQ/octoply/actions/workflows/deploy-site.yml/badge.svg?branch=release" alt="Deploy status"></a>
-</p>
-
 ---
 
 A static site: plain HTML, CSS and JavaScript, with no framework and no build
@@ -31,7 +27,7 @@ flowchart LR
 | Branch | Use it for | Where it deploys |
 | --- | --- | --- |
 | `main` | Everyday changes. Open pull requests against it. | `main--<site>.netlify.app` |
-| Pull requests into `main` | Trying a change before it goes into `main` | `pr-<number>--<site>.netlify.app`, linked in a comment on the PR |
+| Pull requests | Trying a change before it goes into `main` | `deploy-preview-<number>--<site>.netlify.app`, linked on the PR |
 | `release` | The live site | Production |
 
 **To release:** check the change on the `main` preview, then open a pull
@@ -42,8 +38,7 @@ request from `main` into `release` and merge it.
 | Path | Contents |
 | --- | --- |
 | [`site/`](site) | The website: one folder per page, with shared CSS, JS, fonts and images in `site/assets/` |
-| [`netlify.toml`](netlify.toml) | Redirects from old addresses, security and cache headers |
-| [`.github/workflows/deploy-site.yml`](.github/workflows/deploy-site.yml) | Deploys to Netlify on every push to `main` or `release` |
+| [`netlify.toml`](netlify.toml) | Where Netlify publishes from, redirects from old addresses, security and cache headers |
 | [`docs/static-site.md`](docs/static-site.md) | How the site is put together, deploy setup and the launch checklist |
 
 ## Making a change
@@ -57,6 +52,7 @@ request from `main` into `release` and merge it.
 
 ## Deploying
 
-Deploys run in GitHub Actions and need two repository secrets from the Octoply
-Netlify account: `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`. Setup steps are
-in [`docs/static-site.md`](docs/static-site.md#deploying).
+Netlify deploys straight from this repository: `release` goes live, `main` and
+pull requests get preview addresses. There's no GitHub Actions workflow and no
+token to look after. Setup steps are in
+[`docs/static-site.md`](docs/static-site.md#deploying).

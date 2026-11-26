@@ -63,33 +63,29 @@ device for reduced motion.
 
 ## Deploying
 
-`.github/workflows/deploy-site.yml` deploys `site/` to Netlify with GitHub
-Actions (Netlify's own GitHub connection isn't used: a free Netlify account
-can't connect a private repository owned by a GitHub organisation).
+Netlify deploys this repository directly (it's public, so the free Netlify
+plan can connect to it; no GitHub Actions or tokens are involved).
 
 | Event | Result |
 | --- | --- |
-| Push to `main` | Preview at `main--<site>.netlify.app` |
-| Pull request into `main` | Preview at `pr-<number>--<site>.netlify.app`, linked in a PR comment |
 | Push to `release` | Production (the live site) |
+| Push to `main` | Branch preview at `main--<site>.netlify.app` |
+| Pull request | Deploy preview at `deploy-preview-<number>--<site>.netlify.app`, linked on the PR |
 
 Previews and production share one Netlify site, so test form submissions from
 a preview land in the same Forms inbox as real ones.
 
-One-off setup, on the Octoply Netlify account:
+One-off setup, in the Octoply Netlify account, on the existing site:
 
-1. Create the site: Add new project → Deploy manually, and drop in any folder
-   (the workflow replaces it on its first run). Optionally rename it.
-2. Copy its Project ID from Site configuration → Site details.
-3. Create a personal access token: User settings → Applications → Personal
-   access tokens. Give it a clear name and an expiry date, and note when it
-   expires: deploys stop until it is replaced.
-4. In GitHub, OctoplyHQ/octoply → Settings → Secrets and variables → Actions,
-   add `NETLIFY_AUTH_TOKEN` (the token) and `NETLIFY_SITE_ID` (the ID).
-5. Run the workflow from the Actions tab (Deploy site → Run workflow) on
-   `release` for the live site, or on `main` for the preview.
-6. In the site's settings: turn off the Netlify badge and turn on form
-   notifications.
+1. Project configuration → Build & deploy → Continuous deployment → Link
+   repository → GitHub → `OctoplyHQ/octoply-site`. If GitHub asks, allow the
+   Netlify app access to that repository (an organisation owner may need to
+   approve it).
+2. Production branch: `release`. Branch deploys: add `main`. Deploy previews:
+   on for pull requests.
+3. Leave the build command empty; the publish directory comes from
+   `netlify.toml` (`site`).
+4. Turn off the Netlify badge and turn on form notifications.
 
 ## Launch on octoply.co
 

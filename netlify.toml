@@ -1,8 +1,8 @@
 # Static Octoply site. Netlify publishes the site/ folder as-is; there is no
-# build step. Deploys come from GitHub Actions (.github/workflows/deploy-site.yml).
+# build step. Netlify deploys straight from GitHub: release is production,
+# main and pull requests get preview addresses.
 [build]
-  base    = "site"
-  publish = "."
+  publish = "site"
   command = ""
 
 # Moving domains: once octoply.com is added to this Netlify site as a domain
