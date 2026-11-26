@@ -311,6 +311,7 @@ p  { margin: 0 0 1em; }
 .tl-sub { display: flex; align-items: baseline; gap: 10px; padding-left: 18px; position: relative; font-weight: 600; color: rgba(255, 255, 255, .9); }
 .tl-sub::before { content: ""; position: absolute; left: 2px; top: -6px; width: 10px; height: 16px; border-left: 2px solid rgba(255, 255, 255, .3); border-bottom: 2px solid rgba(255, 255, 255, .3); border-bottom-left-radius: 6px; }
 .tl-sub em { font-style: normal; font-weight: 500; font-size: .85rem; color: rgba(255, 255, 255, .7); }
+.tl-spinout { flex-wrap: wrap; margin-top: 4px; color: #f5d79a; }
 
 /* 9. Project pages -------------------------------------------------------- */
 .project-hero { background: var(--teal-800); color: var(--white); overflow: hidden; }
