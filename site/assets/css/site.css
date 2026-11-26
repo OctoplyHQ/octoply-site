@@ -637,12 +637,12 @@ label .field-error { margin: 0; }
 .spinout-body { padding: 22px 26px; }
 .spinout-body h3 { font-size: 1.35rem; margin: 10px 0 .3em; }
 .spinout-body p { color: #4d3f1c; font-size: .96rem; }
-/* Each venue on one line: its name, then its website and map links. */
-.venues { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
-.venues li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 18px; }
-.venues strong { min-width: 9.5em; color: var(--ink); }
-.venues span { display: flex; gap: 18px; }
-.venues a { font-weight: 700; color: var(--teal-700); }
+/* One tile per venue: its logo, then its website and map links. */
+.venues { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.venue { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 14px 16px; background: var(--white); border: 1px solid #f5d79a; border-radius: 12px; }
+.venue-logo { height: 40px; width: auto; }
+.venue-links { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.venue-links a { font-weight: 700; color: var(--teal-700); }
 .pill-amber { color: #8a5800; background: #fff; border-color: #f5d79a; }
 .hero-link { color: var(--white); text-decoration-color: rgba(255, 255, 255, .5); }
 .hero-link:hover { color: var(--teal-300); }
@@ -672,6 +672,13 @@ label .field-error { margin: 0; }
 a.card-visual, .card-visual .slider { display: block; }
 .card-link { color: inherit; text-decoration: none; }
 .card-link:hover { color: var(--teal-700); }
+/* The whole card opens the project: the title link stretches over it. Links
+   inside the card (a sub-project, "About …") sit above it and still work. */
+.card { position: relative; }
+.card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+.card-link:focus-visible { outline: none; }
+.card:has(.card-link:focus-visible) { outline: 3px solid var(--teal-500); outline-offset: 3px; }
+.card .subproject, .card-body > .link-arrow { position: relative; z-index: 2; }
 .card-body > .link-arrow { margin-top: auto; text-decoration: none; }
 .card-body > .link-arrow:hover span { transform: translateX(4px); }
 .card:hover { transform: none; }
