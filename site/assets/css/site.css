@@ -653,7 +653,7 @@ label .field-error { margin: 0; }
 .jobs-intro { position: sticky; top: calc(var(--header-h) + 24px); }
 .jobs-intro h2 { margin-bottom: .4em; }
 .job-help { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
-.job-help li { padding-left: 14px; border-left: 2px solid var(--teal-100); }
+.job-help li { padding: 0; }
 .job-help strong { display: block; }
 .job-help span { color: var(--ink-soft); font-size: .95rem; }
 .jobs .apply { max-width: none; }
