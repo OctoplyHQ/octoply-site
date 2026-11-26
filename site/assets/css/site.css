@@ -746,6 +746,19 @@ a.subproject:hover i { transform: translateX(4px); }
   .cards-two .card-visual { aspect-ratio: auto; height: 100%; min-height: 260px; }
 }
 @media (max-width: 600px) { .cards-two .card-visual { aspect-ratio: 16 / 8; } }
+/* Phones: Robin's Hood shows its phone screen instead of the desktop slides.
+   The slides stay display:none, so their lazy images aren't downloaded. */
+.card-visual .card-phone { display: none; }
+@media (max-width: 600px) {
+  .cards-two .card-visual.has-phone { aspect-ratio: 4 / 3; background: linear-gradient(160deg, var(--teal-700), var(--teal-900)); }
+  .card-visual.has-phone .slider { display: none; }
+  .card-visual .card-phone {
+    display: block; position: absolute; left: 0; right: 0; top: 22px; margin: 0 auto;
+    width: 62%; height: auto; object-fit: initial; border-radius: 16px 16px 0 0;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .35);
+  }
+  .card:hover .card-visual .card-phone { transform: none; }
+}
 
 /* 14. Dark scheme ------------------------------------------------------------
    Follows the visitor's device setting. Hero, project headers, timeline and

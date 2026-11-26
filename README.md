@@ -7,7 +7,7 @@
 
 <p align="center">
   <strong>The Octoply website</strong><br>
-  A coordination company. We originate ideas and develop them until they can stand on their own.
+  We turn things of little value into something useful.
 </p>
 
 ---
