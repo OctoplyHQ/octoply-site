@@ -284,7 +284,7 @@ p  { margin: 0 0 1em; }
 }
 .js .timeline::before { transform: scaleY(0); transition: transform 1.4s var(--ease); }
 .js .timeline.in::before { transform: scaleY(1); }
-.tl-step { position: relative; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 8px 28px; padding: 0 0 36px 40px; }
+.tl-step { position: relative; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 8px 28px; padding: 0 0 36px 40px; }
 .tl-step:last-child { padding-bottom: 0; }
 .tl-step::before {
   content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%;
@@ -312,7 +312,9 @@ p  { margin: 0 0 1em; }
 .tl-sub::before { content: ""; position: absolute; left: 2px; top: -6px; width: 10px; height: 16px; border-left: 2px solid rgba(255, 255, 255, .3); border-bottom: 2px solid rgba(255, 255, 255, .3); border-bottom-left-radius: 6px; }
 .tl-sub em { font-style: normal; font-weight: 500; font-size: .85rem; color: rgba(255, 255, 255, .7); }
 /* Company logos in the timeline, on a light tile so they read on the dark background. */
-.tl-logo { display: block; height: 52px; width: auto; padding: 6px 10px; margin-bottom: 12px; background: var(--white); border-radius: 10px; }
+.tl-when { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.tl-logo { display: flex; align-items: center; justify-content: center; width: 120px; height: 64px; padding: 8px 10px; background: #efeae0; border-radius: 10px; }
+.tl-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
 
 /* 9. Project pages -------------------------------------------------------- */
 .project-hero { background: var(--teal-800); color: var(--white); overflow: hidden; }
@@ -608,6 +610,7 @@ label .field-error { margin: 0; }
   .phone-float { right: -8px; bottom: -20px; width: 22%; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .tl-step { grid-template-columns: 1fr; padding-left: 36px; }
+  .tl-when { flex-direction: row; align-items: flex-start; gap: 14px; }
   .tl-branches { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
