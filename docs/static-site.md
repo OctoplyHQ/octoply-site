@@ -94,9 +94,19 @@ organisation data on the homepage all use `https://octoply.co`. To go live:
 
 1. In Netlify, add `octoply.co` as the primary domain and `octoply.com` /
    `www.octoply.com` as domain aliases, then point DNS at Netlify.
-2. Remove the preview-only `X-Robots-Tag` line from `netlify.toml`.
+2. Turn off visitor access (the password) in Netlify. The preview-only
+   `X-Robots-Tag` line has already been removed from `netlify.toml`.
 3. Switch on email notifications for the `application` and `contact` forms.
 4. Submit `https://octoply.co/sitemap.xml` in Google Search Console.
+
+### Icons and sharing
+
+| File | Used by |
+| --- | --- |
+| `site/favicon.ico` (16 to 48px) and `site/icon.svg` | Browser tabs and bookmarks |
+| `site/apple-touch-icon.png` (180px) | iPhone and iPad home screens, and apps that look for it at the root |
+| `site/site.webmanifest` with `assets/img/icon-192.png`, `icon-512.png`, `icon-maskable-512.png` | Android home screens |
+| `site/assets/img/share.jpg` (1200 by 630) | Link previews on LinkedIn, WhatsApp, Slack and so on, via `og:image` |
 
 ### Old addresses (redirects in netlify.toml)
 

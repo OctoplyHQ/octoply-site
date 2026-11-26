@@ -73,9 +73,6 @@
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-N9v3EnPaUyp6HvI/g75KoK11mUw7quk1fPSwEhREnaU='; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
     Cross-Origin-Opener-Policy = "same-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
-    # PREVIEW ONLY: keeps search engines from listing the preview site.
-    # Remove this line when the site goes live on octoply.co.
-    X-Robots-Tag = "noindex, nofollow"
 # CSS and JS links carry ?v=<content hash>, so they can be cached for a year.
 [[headers]]
   for = "/assets/css/*"
@@ -89,6 +86,10 @@
   for = "/assets/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
 # Images have no version in their URL: browsers re-check them (cheap, via ETag)
 # so a replaced image shows up straight away.
 [[headers]]
